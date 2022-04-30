@@ -1,70 +1,67 @@
 using TMPro;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class HubController : MonoBehaviour
 {
-    [SerializeField] HubBase blueHub;
-    [SerializeField] HubBase yellowHub;
-    //[SerializeField] TMP_Text output;
-    [SerializeField] Transform blueHubModel;
-    [SerializeField] Transform yellowHubModel;
-    Vector3 controllerOffset;
-    //[SerializeField] Transform hubButton;
-    //[SerializeField] ParticleSystem hubButtonEffect;
-    //[SerializeField] Transform xAxisPositive;
-    //[SerializeField] Transform xAxisNegative;
-    //[SerializeField] Transform yAxisPositive;
-    //[SerializeField] Transform yAxisNegative;
-    //[SerializeField] Transform zAxisPositive;
-    //[SerializeField] Transform zAxisNegative;
+    [SerializeField] List<HubBase> hubs;
+    [SerializeField] List<Transform> hubModels;
+    [SerializeField] float maxRotSpeed = 50.0f;
+    [SerializeField] List<Vector3> controllerOffsets;
+    [SerializeField] List<Vector3> controllerOrientations;
+    private List<bool> isCallibrated;
 
+
+    public void Start()
+    {
+        controllerOffsets = new List<Vector3>();
+        controllerOrientations = new List<Vector3>();
+        isCallibrated=new List<bool>();
+        for (int i = 0; i < hubs.Count; i++)
+        { 
+            controllerOrientations.Add(new Vector3());
+            isCallibrated.Add(false);
+            controllerOffsets.Add(new Vector3());
+        }
+    }
     public void OnIsConnectedChanged(bool connected)
     {
-        controllerOffset = blueHub.GetComponent<OrientationSensor>().Orientation;
-        // output.text = connected ? "Connected" : "Disconnected";
+        //controllerOffset = blueHub.GetComponent<OrientationSensor>().Orientation;
     }
 
-    //public void OnButtonChanged(bool pressed)
-    //{
-    //    hubButton.localPosition = new Vector3(0f, pressed ? 1.81f: 2f, 1.6f);
-    //    if (pressed)
-    //    {
-    //        hubButtonEffect.Emit(20);
-    //    }
-    //}
-
-    //public void OnAccelerationChanged(Vector3 acceleration)
-    //{
-    //    xAxisPositive.gameObject.SetActive(acceleration.x > 0.01f);
-    //    xAxisNegative.gameObject.SetActive(acceleration.x < -0.01f);
-    //    xAxisPositive.localScale = new Vector3(100f, 100f, 1000f * Mathf.Max(0f, acceleration.x));
-    //    xAxisNegative.localScale = new Vector3(100f, 100f, 1000f * Mathf.Max(0f, -acceleration.x));
-
-    //    yAxisPositive.gameObject.SetActive(acceleration.y > 0.01f);
-    //    yAxisNegative.gameObject.SetActive(acceleration.y < -0.01f);
-    //    yAxisPositive.localScale = new Vector3(100f, 100f, 1000f * Mathf.Max(0f, acceleration.y));
-    //    yAxisNegative.localScale = new Vector3(100f, 100f, 1000f * Mathf.Max(0f, -acceleration.y));
-
-    //    zAxisPositive.gameObject.SetActive(acceleration.z > 0.01f);
-    //    zAxisNegative.gameObject.SetActive(acceleration.z < -0.01f);
-    //    zAxisPositive.localScale = new Vector3(100f, 100f, 1000f * Mathf.Max(0f, acceleration.z));
-    //    zAxisNegative.localScale = new Vector3(100f, 100f, 1000f * Mathf.Max(0f, -acceleration.z));
-    //}
-
+    //Lego gyro callbacks
     public void OnBlueOrientationChanged(Vector3 orientation)
     {
-        blueHubModel.rotation = Quaternion.Euler(orientation);// -controllerOffset);
+        if (!isCallibrated[0])
+            CallibrateController(0);
+       controllerOrientations[0] = orientation;
     }
     public void OnYellowOrientationChanged(Vector3 orientation)
     {
-        yellowHubModel.rotation = Quaternion.Euler(orientation);
+        if (!isCallibrated[1])
+            CallibrateController(1);
+        controllerOrientations[1] = orientation;
+     }
+
+    private void CallibrateController(int i)
+    {
+        Vector3 orientation = hubs[i].GetComponent<OrientationSensor>().Orientation;
+        orientation.y -= 90.0f;
+        controllerOffsets[i] = orientation;
+
+        isCallibrated[i] = true;
     }
 
-    void Update()
+    private void UpdateRotations(float time)
     {
-        //if (hub.IsConnected)
-        //{
-        //    output.text = "Battery " + hub.BatteryLevel + "%";
-        //}
+       
+        for (int i = 0; i < hubs.Count && i < controllerOrientations.Count; i++)
+        {
+            hubModels[i].GetComponent<Rigidbody>().MoveRotation(Quaternion.RotateTowards(hubModels[i].GetComponent<Rigidbody>().rotation, Quaternion.Euler(controllerOrientations[i]-controllerOffsets[i]), maxRotSpeed * time));
+        }
+    }
+    void FixedUpdate()
+    {
+         UpdateRotations(Time.fixedDeltaTime);
     }
 }
