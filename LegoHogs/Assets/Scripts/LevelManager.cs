@@ -11,14 +11,15 @@ public class LevelManager : MonoBehaviour
         Playing
     }
 
-    [SerializeField] private Vector3 myPlayerSpawnPoint;
     [SerializeField] private Vector3 myBattleBusSpawnPoint;
     [SerializeField] private GameObject myPlayerPrefab;
+    [SerializeField] private GameObject myBattleBusPrefab;
     [SerializeField] private LevelState myLevelState;
     [SerializeField] private Canvas myMainMenu;
     [SerializeField] private Canvas myGameMenu;
     
     private GameObject myPlayer;
+    private GameObject myBattleBus;
     private GameObject[] myPlatforms;
 
     CameraManager myCameraManager;
@@ -45,7 +46,6 @@ public class LevelManager : MonoBehaviour
             return;
         }
 
-        myPlayer = Instantiate(myPlayerPrefab);
         myPlatforms = GameObject.FindGameObjectsWithTag("Platform");
 
         myCameraManager.Initialize();
@@ -59,9 +59,15 @@ public class LevelManager : MonoBehaviour
         
     }
 
-    public void OnPlay()
+    public void OnSpawn()
     {
         SetLevelState(LevelState.Playing);
+        myPlayer = Instantiate(myPlayerPrefab, myBattleBus.transform.position, Quaternion.identity);
+    }
+
+    public void OnPlay()
+    {
+        SetLevelState(LevelState.Spawning);
     }
 
     private void SetLevelState(LevelState aState)
@@ -82,7 +88,7 @@ public class LevelManager : MonoBehaviour
                 myLevelState = aState;
                 myMainMenu.gameObject.SetActive(false);
                 myGameMenu.gameObject.SetActive(true);
-                myGameMenu.gameObject.SetActive(true);
+                myBattleBus = Instantiate(myBattleBusPrefab, myBattleBusSpawnPoint, Quaternion.identity);
                 break;
             case LevelState.Playing:
                 myLevelState = aState;
