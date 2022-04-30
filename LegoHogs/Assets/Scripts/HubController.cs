@@ -8,6 +8,7 @@ public class HubController : MonoBehaviour
     //[SerializeField] TMP_Text output;
     [SerializeField] Transform blueHubModel;
     [SerializeField] Transform yellowHubModel;
+    Vector3 controllerOffset;
     //[SerializeField] Transform hubButton;
     //[SerializeField] ParticleSystem hubButtonEffect;
     //[SerializeField] Transform xAxisPositive;
@@ -17,10 +18,11 @@ public class HubController : MonoBehaviour
     //[SerializeField] Transform zAxisPositive;
     //[SerializeField] Transform zAxisNegative;
 
-    //public void OnIsConnectedChanged(bool connected)
-    //{
-    //    output.text = connected ? "Connected" : "Disconnected";
-    //}
+    public void OnIsConnectedChanged(bool connected)
+    {
+        controllerOffset = blueHub.GetComponent<OrientationSensor>().Orientation;
+        // output.text = connected ? "Connected" : "Disconnected";
+    }
 
     //public void OnButtonChanged(bool pressed)
     //{
@@ -51,7 +53,7 @@ public class HubController : MonoBehaviour
 
     public void OnBlueOrientationChanged(Vector3 orientation)
     {
-        blueHubModel.rotation = Quaternion.Euler(orientation);
+        blueHubModel.rotation = Quaternion.Euler(orientation);// -controllerOffset);
     }
     public void OnYellowOrientationChanged(Vector3 orientation)
     {
