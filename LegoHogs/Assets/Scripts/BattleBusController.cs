@@ -42,6 +42,12 @@ public class BattleBusController : MonoBehaviour
         }
         else
         {
+            if (Vector3.Distance(transform.position, myTargetPosition) < 1.0f)
+            {
+                Destroy(gameObject);
+                return;
+            }
+
             transform.position = Vector3.MoveTowards(transform.position, myTargetPosition, 0.24f * Time.fixedDeltaTime);
             Vector3 targetDirection = myTargetPosition - transform.position;
             Quaternion targetRotation = Quaternion.LookRotation(new Vector3(targetDirection.x, 0, targetDirection.z));
