@@ -7,10 +7,9 @@ public class HubController : MonoBehaviour
     [SerializeField] List<HubBase> hubs;
     [SerializeField] List<Transform> hubModels;
     [SerializeField] float maxRotSpeed = 50.0f;
-    [SerializeField] List<Vector3> controllerOffsets;
-    [SerializeField] List<Vector3> controllerOrientations;
+    List<Vector3> controllerOffsets;
+    List<Vector3> controllerOrientations;
     private List<bool> isCallibrated;
-
 
     public void Start()
     {
@@ -26,7 +25,6 @@ public class HubController : MonoBehaviour
     }
     public void OnIsConnectedChanged(bool connected)
     {
-        //controllerOffset = blueHub.GetComponent<OrientationSensor>().Orientation;
     }
 
     //Lego gyro callbacks
