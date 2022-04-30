@@ -44,5 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89eb1593a3a69ed41a97c449da626a4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myPlayerSpawnPoint: {x: 0, y: 0, z: 0}
-  myPlayerPrefab: {fileID: 0}
+  myBattleBusSpawnPoint: {x: -8.36, y: 0.05, z: -9.83}
+  myPlayerPrefab: {fileID: 4646020701320273556, guid: 584063422be78db4db8cde154ae49bf2, type: 3}
+  myBattleBusPrefab: {fileID: 7840708072447440108, guid: bf6094f7d56c17c4b82f80613883d404, type: 3}
+  myLevelState: 0
+  myMainMenu: {fileID: 0}
+  myGameMenu: {fileID: 0}

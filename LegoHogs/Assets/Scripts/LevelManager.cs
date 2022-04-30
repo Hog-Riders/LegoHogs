@@ -59,10 +59,16 @@ public class LevelManager : MonoBehaviour
         
     }
 
+    public void OnEnterHole()
+    {
+        myCameraManager.OnEnterHole();
+    }
+
     public void OnSpawn()
     {
         SetLevelState(LevelState.Playing);
         myPlayer = Instantiate(myPlayerPrefab, myBattleBus.transform.position, Quaternion.identity);
+        myCameraManager.OnSpawned();
     }
 
     public void OnPlay()
