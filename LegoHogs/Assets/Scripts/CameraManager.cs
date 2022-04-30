@@ -20,8 +20,6 @@ public class CameraManager : MonoBehaviour
     [SerializeField] private float myDistanceOffset = 2.0f;
     [Tooltip("Smoothing factor for rapid changes on the Y-axis.")]
     [SerializeField] private float myHeightDamping = 2.0f;
-    [Tooltip("Smoothing factor for the rotation.")]
-    [SerializeField] private float myRotationSnapTime = 0.3f;
     [Tooltip("Smoothing factor for the distance on the Z-axis.")]
     [SerializeField] private float myDistanceSnapTime;
     [Tooltip("Smoothing factor for rapid changes on the distance or Z-axis.")]
@@ -85,12 +83,12 @@ public class CameraManager : MonoBehaviour
         {
             case CameraState.None:
             {
-                myCameraState = CameraState.None;
+                myCameraState = aState;
                 break;
             }
             case CameraState.FollowPlayer:
             {
-                myCameraState = CameraState.FollowPlayer;
+                myCameraState = aState;
                 break;
             }
         }
