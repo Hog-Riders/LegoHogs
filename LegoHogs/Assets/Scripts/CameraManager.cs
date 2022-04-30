@@ -62,6 +62,11 @@ public class CameraManager : MonoBehaviour
         }
     }
 
+    public void OnEnterHole()
+    {
+
+    }
+
     public void OnSpawned()
     {
         myPlayer = myLevelManager.GetPlayer();

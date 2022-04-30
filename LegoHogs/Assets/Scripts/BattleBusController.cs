@@ -29,10 +29,10 @@ public class BattleBusController : MonoBehaviour
         if (!myHasSpawned)
         {
             Vector3 zero = new Vector3(0.0f, transform.position.y, 0.0f);
-            transform.position = Vector3.MoveTowards(transform.position, zero, 0.24f * Time.fixedDeltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, zero, 2.0f * Time.deltaTime);
             Vector3 targetDirection = zero - transform.position;
             Quaternion targetRotation = Quaternion.LookRotation(new Vector3(targetDirection.x, transform.position.y, targetDirection.z));
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 0.24f * Time.fixedDeltaTime);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 2.0f * Time.deltaTime);
 
             if (Vector3.Distance(transform.position, zero) < 1.0f)
             {
@@ -48,10 +48,10 @@ public class BattleBusController : MonoBehaviour
                 return;
             }
 
-            transform.position = Vector3.MoveTowards(transform.position, myTargetPosition, 0.24f * Time.fixedDeltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, myTargetPosition, 2.0f * Time.deltaTime);
             Vector3 targetDirection = myTargetPosition - transform.position;
             Quaternion targetRotation = Quaternion.LookRotation(new Vector3(targetDirection.x, 0, targetDirection.z));
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 0.24f * Time.fixedDeltaTime);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 2.0f * Time.deltaTime);
         }
     }
 }

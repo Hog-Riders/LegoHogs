@@ -44,3 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a2a2c8d1a29af44381db7311b496742, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myHeightOffset: 5
+  myDistanceOffset: 5
+  myHeightDamping: 2
+  myDistanceSnapTime: 0.5
+  myDistanceMultiplier: 0.5
+  myCameraState: 0
