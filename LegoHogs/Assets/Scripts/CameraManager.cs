@@ -50,6 +50,8 @@ public class CameraManager : MonoBehaviour
 
     public void Initialize()
     {
+        SetCameraState(CameraState.None);
+
         myCamera = Camera.main;
 
         myLevelManager = FindObjectOfType<LevelManager>();
@@ -58,7 +60,10 @@ public class CameraManager : MonoBehaviour
             Debug.LogError("Failed to find LevelManager");
             return;
         }
+    }
 
+    public void OnSpawned()
+    {
         myPlayer = myLevelManager.GetPlayer();
         if (myPlayer == null)
         {
@@ -68,6 +73,7 @@ public class CameraManager : MonoBehaviour
 
         myPlayerTransform = myPlayer.GetComponent<Transform>();
         myPlayerRigidbody = myPlayer.GetComponent<Rigidbody>();
+
         SetCameraState(CameraState.FollowPlayer);
     }
 
