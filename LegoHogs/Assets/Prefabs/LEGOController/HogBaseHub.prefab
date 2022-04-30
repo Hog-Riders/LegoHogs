@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentPlatform: {fileID: 0}
   maxRotSpeed: 50
+  currentController: 0
 --- !u!114 &1120837663168503284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,9 +62,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hubType: 1
-  connectToSpecificHubId: 69936A2B84900000
+  connectToSpecificHubId: 
   autoConnectOnStart: 1
-  _ledColor: {r: 0, g: 1, b: 0, a: 1}
+  _ledColor: {r: 0, g: 0, b: 1, a: 1}
   internalServices:
   - {fileID: 0}
   - {fileID: 0}
