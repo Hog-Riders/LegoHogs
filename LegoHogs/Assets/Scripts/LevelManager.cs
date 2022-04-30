@@ -7,10 +7,12 @@ public class LevelManager : MonoBehaviour
     {
         None,
         MainMenu,
+        Spawning,
         Playing
     }
 
     [SerializeField] private Vector3 myPlayerSpawnPoint;
+    [SerializeField] private Vector3 myBattleBusSpawnPoint;
     [SerializeField] private GameObject myPlayerPrefab;
     [SerializeField] private LevelState myLevelState;
     [SerializeField] private Canvas myMainMenu;
@@ -75,6 +77,12 @@ public class LevelManager : MonoBehaviour
                 myLevelState = aState;
                 myMainMenu.gameObject.SetActive(true);
                 myGameMenu.gameObject.SetActive(false);
+                break;
+            case LevelState.Spawning:
+                myLevelState = aState;
+                myMainMenu.gameObject.SetActive(false);
+                myGameMenu.gameObject.SetActive(true);
+                myGameMenu.gameObject.SetActive(true);
                 break;
             case LevelState.Playing:
                 myLevelState = aState;
