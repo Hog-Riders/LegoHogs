@@ -28,11 +28,8 @@ public class CameraManager : MonoBehaviour
     [SerializeField] private float myDistanceMultiplier;
 
     private float myUsedDistance;
-    private float myWantedRotationAngle;
     private float myWantedHeight;
-    private float myCurrentRotationAngle;
     private float myCurrentHeight;
-    private Quaternion myCurrentRotation;
     private Vector3 myWantedPosition;
     private Vector3 myVelocity;
     private Transform myPlayerTransform;
@@ -64,7 +61,7 @@ public class CameraManager : MonoBehaviour
             return;
         }
 
-        myPlayer = FindObjectOfType<LevelManager>().GetPlayer();
+        myPlayer = myLevelManager.GetPlayer();
         if (myPlayer == null)
         {
             Debug.LogError("Failed to find Player");
@@ -104,11 +101,6 @@ public class CameraManager : MonoBehaviour
         myWantedHeight = myPlayerTransform.position.y + myHeightOffset;
         myCurrentHeight = myCamera.transform.position.y;
 
-        myWantedRotationAngle = myPlayerTransform.eulerAngles.y;
-        myCurrentRotationAngle = myCamera.transform.eulerAngles.y;
-
-        myCurrentRotationAngle = Mathf.SmoothDampAngle(myCurrentRotationAngle, myWantedRotationAngle, ref myVelocity.y, myRotationSnapTime);
-
         myCurrentHeight = Mathf.Lerp(myCurrentHeight, myWantedHeight, myHeightDamping * Time.deltaTime);
 
         myWantedPosition = myPlayerTransform.position;
@@ -116,7 +108,7 @@ public class CameraManager : MonoBehaviour
 
         myUsedDistance = Mathf.SmoothDampAngle(myUsedDistance, myDistanceOffset + (myPlayerRigidbody.velocity.magnitude * myDistanceMultiplier), ref myVelocity.z, myDistanceSnapTime);
 
-        myWantedPosition += Quaternion.Euler(0.0f, myCurrentRotationAngle, 0.0f) * new Vector3(0.0f, 0.0f, -myUsedDistance);
+        myWantedPosition += Quaternion.Euler(0.0f, myCamera.transform.rotation.y, 0.0f) * new Vector3(0.0f, 0.0f, -myUsedDistance);
 
         myCamera.transform.position = myWantedPosition;
 
