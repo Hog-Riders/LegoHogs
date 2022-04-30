@@ -5,12 +5,19 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class AudioManager : MonoBehaviour
 {
-    public AudioSource audioData;
+    [SerializeField] private AudioClip myBackgroundMusic;
+    [SerializeField] private AudioClip myHogRiderClip;
+
+    private AudioSource myClipAudioSource;
+    private AudioSource myBackgroundAudioSource;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        myClipAudioSource = GetComponent<AudioSource>();
+        myBackgroundAudioSource = GetComponent<AudioSource>();
+        myBackgroundAudioSource.clip = myBackgroundMusic;
+        myBackgroundAudioSource.Play();
     }
 
     // Update is called once per frame
@@ -21,7 +28,7 @@ public class AudioManager : MonoBehaviour
 
     public void OnHogRider()
     {
-        audioData = GetComponent<AudioSource>();
-        audioData.Play(0);
+        myClipAudioSource.clip = myHogRiderClip;
+        myClipAudioSource.Play();
     }
 }

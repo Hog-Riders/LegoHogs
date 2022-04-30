@@ -245,10 +245,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -8204957912304003671, guid: 584063422be78db4db8cde154ae49bf2, type: 3}
-      propertyPath: m_Radius
-      value: 0.12
-      objectReference: {fileID: 0}
     - target: {fileID: 4646020701320273556, guid: 584063422be78db4db8cde154ae49bf2, type: 3}
       propertyPath: m_Name
       value: HogPrefab
@@ -308,7 +304,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: e1261e22186114a429bec3f0e7c22c43, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e1261e22186114a429bec3f0e7c22c43, type: 3}
       propertyPath: m_LocalPosition.x
@@ -365,7 +361,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8195323373991310865, guid: 3cb1fb9bcdf58de48aacec61311d1d68, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8195323373991310865, guid: 3cb1fb9bcdf58de48aacec61311d1d68, type: 3}
       propertyPath: m_LocalPosition.x
