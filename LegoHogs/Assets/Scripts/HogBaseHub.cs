@@ -35,6 +35,16 @@ public class HogBaseHub : MonoBehaviour
             return;
         }
  
+        
+        controllerOffset = new Vector3(0, 0, 0);
+        controllerOrientation = new Vector3(0, 0, 0);
+        isCallibrated = false;
+    }
+
+    public void OnIsConnectedChanged(bool connected)
+    {
+        if (!connected)
+            return;
         if (hubIDs.TryGetValue(hub.device.DeviceID, out currentController))
         {
             switch (currentController)
@@ -50,9 +60,8 @@ public class HogBaseHub : MonoBehaviour
                     break;
             }
         }
-        controllerOffset = new Vector3(0, 0, 0);
-        controllerOrientation = new Vector3(0, 0, 0);
-        isCallibrated = false;
+
+       // CallibrateController();
     }
 
     public void OnOrientationChanged(Vector3 orientation)
@@ -64,7 +73,7 @@ public class HogBaseHub : MonoBehaviour
     public void CallibrateController()
     {
         controllerOffset = GetComponent<OrientationSensor>().Orientation;
-        controllerOffset.y -= 90.0f;
+        //controllerOffset.y += 90.0f;
         isCallibrated = true;
     }
 
