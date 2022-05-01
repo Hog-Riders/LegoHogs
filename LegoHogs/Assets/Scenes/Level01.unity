@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18428779, g: 0.5832273, b: 0.7312675, a: 1}
+  m_IndirectSpecularColor: {r: 0.18427426, g: 0.5832499, b: 0.7312815, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -697,6 +697,11 @@ Transform:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5913098161284012229, guid: 208e7696c101cf9488132a94b8a41514, type: 3}
   m_PrefabInstance: {fileID: 5913098160444895676}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1422006013 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2833477625353117322, guid: e6a79f5d8b7824b4596729d59403a010, type: 3}
+  m_PrefabInstance: {fileID: 9022736257014708702}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1490174734 stripped
 GameObject:
@@ -1369,7 +1374,7 @@ PrefabInstance:
     - target: {fileID: 7042831137013466083, guid: 7ce230ed014b9bd488d12180c9248ae0, type: 3}
       propertyPath: startpoint
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1422006013}
     - target: {fileID: 7042831137013466083, guid: 7ce230ed014b9bd488d12180c9248ae0, type: 3}
       propertyPath: myKillDepth
       value: 5
