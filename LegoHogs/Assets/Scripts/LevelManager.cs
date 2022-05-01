@@ -10,7 +10,8 @@ public class LevelManager : MonoBehaviour
         None,
         MainMenu,
         Spawning,
-        Playing
+        Playing,
+        Finished
     }
 
     [SerializeField] private Vector3 myBattleBusSpawnPoint;
@@ -98,7 +99,8 @@ public class LevelManager : MonoBehaviour
     public void OnEnterHazard(GameObject aBall)
     {
         myUIManager.OnHazardText();
-        Destroy(aBall);
+        SetLevelState(LevelState.Finished);
+        myPlayer.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
     }
 
     public void OnSpawn()
@@ -139,6 +141,9 @@ public class LevelManager : MonoBehaviour
                 myBattleBus = Instantiate(myBattleBusPrefab, myBattleBusSpawnPoint, Quaternion.identity);
                 break;
             case LevelState.Playing:
+                myLevelState = aState;
+                break;
+            case LevelState.Finished:
                 myLevelState = aState;
                 break;
         }
