@@ -64,6 +64,11 @@ public class LevelManager : MonoBehaviour
         myCameraManager.OnEnterHole();
     }
 
+    public void OnEnterEndPoint()
+    {
+
+    }
+
     public void OnSpawn()
     {
         SetLevelState(LevelState.Playing);
