@@ -107,6 +107,8 @@ public class CameraManager : MonoBehaviour
 
     private void FollowPlayer()
     {
+        if (myLevelManager.GetState() == LevelManager.LevelState.Finished)
+            return;
         myWantedHeight = myPlayerTransform.position.y + myHeightOffset;
         myCurrentHeight = myCamera.transform.position.y;
 
