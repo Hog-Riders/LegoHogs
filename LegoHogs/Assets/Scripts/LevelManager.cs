@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class LevelManager : MonoBehaviour
 {
@@ -28,7 +29,7 @@ public class LevelManager : MonoBehaviour
 
     private GameObject myPlayer;
     private GameObject myBattleBus;
-    private GameObject[] myPlatforms;
+    private List<GameObject> myEnteredPlatforms;
     private GameObject myCurrentPlatform;
 
     CameraManager myCameraManager;
@@ -37,11 +38,6 @@ public class LevelManager : MonoBehaviour
     public LevelState GetState()
     {
         return myLevelState;
-    }
-
-    public GameObject[] GetPlatforms()
-    {
-        return myPlatforms;
     }
 
     public GameObject GetPlayer()
@@ -68,8 +64,6 @@ public class LevelManager : MonoBehaviour
             return;
         }
 
-        myPlatforms = GameObject.FindGameObjectsWithTag("Platform");
-
         myCameraManager.Initialize();
 
         SetLevelState(LevelState.MainMenu);
@@ -79,13 +73,16 @@ public class LevelManager : MonoBehaviour
     void Update()
     {
        if (myCurrentPlatform != null && myPlayer.transform.position.y < myCurrentPlatform.transform.position.y - myKillDepth)
-                OnReSpawn();
+            OnReSpawn();
     }
 
     public void OnEnterPlatform(GameObject aPlatform)
     {
         myCurrentPlatform = aPlatform;
-        ++myScore;
+        if (!myEnteredPlatforms.Contains(aPlatform))
+            ++myScore;
+
+        myEnteredPlatforms.Add(aPlatform);
     }
 
     public void OnEnterHole(GameObject aBall)
