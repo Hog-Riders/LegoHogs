@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5286428988238240696}
   - component: {fileID: 3139853118555422649}
   - component: {fileID: 6713606951702581693}
+  - component: {fileID: 1248578383}
   m_Layer: 0
   m_Name: FanPrefab
   m_TagString: Untagged
@@ -27,14 +28,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5935136655842949741}
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: -0.7069834, y: 0, z: 0, w: 0.7072302}
   m_LocalPosition: {x: 2.3043501, y: 0.28565076, z: 1.9613017}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -89.98, y: 0, z: 0}
 --- !u!33 &7978650580343353202
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -111,3 +112,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.19999999, y: 0.01, z: 0.07}
   m_Center: {x: 0, y: 0, z: 0.019999996}
+--- !u!95 &1248578383
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5935136655842949741}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9ddd4569a4dd774408050ecc0ca35911, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
