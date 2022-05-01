@@ -44,3 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40e9c407a5803c445832516c48afce2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myBackgroundMusic: {fileID: 8300000, guid: 2be9b9f9e0ff68d40b67ddb975bbce2b, type: 3}
+  myHogRiderClip: {fileID: 8300000, guid: b74f4e60bbc64bf42b2b044750ffab7f, type: 3}
+  myBattleBusClip: {fileID: 8300000, guid: 5e7d677751e07124ba2aea6d9e8e7dbe, type: 3}
+  myBussinClip: {fileID: 8300000, guid: a552121d42a5a6f4bbcbbaa580342bb3, type: 3}
