@@ -66,6 +66,8 @@ public class LevelManager : MonoBehaviour
         myCameraManager.Initialize();
 
         SetLevelState(LevelState.MainMenu);
+
+        myEnteredPlatforms = new List<GameObject>();
     }
 
     // Update is called once per frame
