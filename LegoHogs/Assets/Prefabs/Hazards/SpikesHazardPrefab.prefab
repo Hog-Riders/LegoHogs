@@ -1841,8 +1841,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 0.6, z: 2}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2, y: 0.15, z: 2}
+  m_Center: {x: 0, y: -0.24, z: 0}
 --- !u!65 &5531052579980265167
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1854,7 +1854,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.8, y: 1, z: 1.8}
+  m_Size: {x: 1.8, y: 0.46, z: 1.8}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3296125580742343932
 MonoBehaviour:
@@ -1868,8 +1868,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4987391c449a3fc4aa356e788b33efc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myPlayerPrefab: {fileID: 0}
-  startpoint: {fileID: 0}
 --- !u!1 &6564090236035375623
 GameObject:
   m_ObjectHideFlags: 0

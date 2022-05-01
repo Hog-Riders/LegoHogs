@@ -1,11 +1,13 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private Canvas myMainMenu;
     [SerializeField] private Canvas myGameMenu;
+    [SerializeField] private Canvas myPauseMenu;
     [SerializeField] private GameObject myTiltControlsText;
     [SerializeField] private GameObject myHazardText;
     [SerializeField] private GameObject myEndPointText;
@@ -38,6 +40,7 @@ public class UIManager : MonoBehaviour
                 myYellowHubImage.SetActive(false);
                 myYellowHubCross.SetActive(false);
                 myYellowHubCheckmark.SetActive(false);
+                myPauseMenu.gameObject.SetActive(false);
                 break;
             case LevelManager.LevelState.MainMenu:
                 myMainMenu.gameObject.SetActive(true);
@@ -89,6 +92,18 @@ public class UIManager : MonoBehaviour
         }
 
         UpdateHubIcons();
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (myPauseMenu.gameObject.activeInHierarchy)
+            {
+                myPauseMenu.gameObject.SetActive(false);
+            }
+            else
+            {
+                myPauseMenu.gameObject.SetActive(true);
+            }
+        }
     }
     public void OnRespawn()
     {
@@ -154,5 +169,17 @@ public class UIManager : MonoBehaviour
             myYellowHubCross.SetActive(true);
             myYellowHubCheckmark.SetActive(false);
         }
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
+    public void RestartGame()
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
+
     }
 }

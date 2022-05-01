@@ -24,6 +24,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject startpoint;
     [SerializeField] private float myKillDepth = 2.0f;
 
+    public List<GameObject> deadHogs;
+
     public int myScore;
 
     private GameObject myPlayer;
@@ -68,11 +70,14 @@ public class LevelManager : MonoBehaviour
         SetLevelState(LevelState.MainMenu);
 
         myEnteredPlatforms = new List<GameObject>();
+        deadHogs = new List<GameObject>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (myLevelState.Equals(LevelState.Finished))
+            return;
        if (myCurrentPlatform != null && myPlayer.transform.position.y < myCurrentPlatform.transform.position.y - myKillDepth)
             OnReSpawn();
     }
@@ -94,12 +99,15 @@ public class LevelManager : MonoBehaviour
     public void OnEnterEndPoint(GameObject aBall)
     {
         myUIManager.OnEndPoint();
+        SetLevelState(LevelState.Finished);
         Destroy(aBall);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+  //      SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void OnEnterHazard(GameObject aBall)
     {
+        if (myLevelState.Equals(LevelState.Finished))
+            return;
         myUIManager.OnHazardText();
         SetLevelState(LevelState.Finished);
         myPlayer.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
