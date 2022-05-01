@@ -1393,7 +1393,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7042831137013466083, guid: 7ce230ed014b9bd488d12180c9248ae0, type: 3}
       propertyPath: myBattleBusSpawnPoint.y
-      value: 0.05
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 7042831137013466083, guid: 7ce230ed014b9bd488d12180c9248ae0, type: 3}
       propertyPath: myBattleBusSpawnPoint.z
