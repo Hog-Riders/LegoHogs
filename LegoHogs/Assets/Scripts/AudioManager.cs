@@ -32,12 +32,14 @@ public class AudioManager : MonoBehaviour
     public void OnHogRider()
     {
         myClipAudioSource.clip = myHogRiderClip;
+        myClipAudioSource.volume = 0.7f;
         myClipAudioSource.Play();
     }
 
     public void OnBattleBus()
     {
         myClipAudioSource.clip = myBattleBusClip;
+        myClipAudioSource.volume = 1.0f;
         myClipAudioSource.Play();
     }
 
@@ -47,6 +49,7 @@ public class AudioManager : MonoBehaviour
         Invoke(nameof(Bussin), spawnInterval);
 
         myClipAudioSource.clip = myBussinClip;
+        myClipAudioSource.volume = 1.0f;
         myClipAudioSource.Play();
     }
 }
