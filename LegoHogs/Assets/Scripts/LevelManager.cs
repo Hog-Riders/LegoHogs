@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
-    enum LevelState
+    public enum LevelState
     {
         None,
         MainMenu,
@@ -15,14 +15,13 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject myPlayerPrefab;
     [SerializeField] private GameObject myBattleBusPrefab;
     [SerializeField] private LevelState myLevelState;
-    [SerializeField] private Canvas myMainMenu;
-    [SerializeField] private Canvas myGameMenu;
     
     private GameObject myPlayer;
     private GameObject myBattleBus;
     private GameObject[] myPlatforms;
 
     CameraManager myCameraManager;
+    UIManager myUIManager;
 
     public GameObject[] GetPlatforms()
     {
@@ -37,12 +36,17 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SetLevelState(LevelState.None);
-
         myCameraManager = FindObjectOfType<CameraManager>();
         if (myCameraManager == null)
         {
             Debug.LogError("Failed to find CameraManager");
+            return;
+        }
+
+        myUIManager = FindObjectOfType<UIManager>();
+        if (myUIManager == null)
+        {
+            Debug.LogError("Failed to find UIManager");
             return;
         }
 
@@ -59,9 +63,21 @@ public class LevelManager : MonoBehaviour
         
     }
 
-    public void OnEnterHole()
+    public void OnEnterHole(GameObject aBall)
     {
         myCameraManager.OnEnterHole();
+    }
+
+    public void OnEnterEndPoint(GameObject aBall)
+    {
+        myUIManager.OnEndPoint();
+        Destroy(aBall);
+    }
+
+    public void OnEnterHazard(GameObject aBall)
+    {
+        myUIManager.OnHazardText();
+        Destroy(aBall);
     }
 
     public void OnSpawn()
@@ -78,28 +94,21 @@ public class LevelManager : MonoBehaviour
 
     private void SetLevelState(LevelState aState)
     {
+        myUIManager.SwitchLevelState(aState);
         switch (aState)
         {
             case LevelState.None:
                 myLevelState = aState;
-                myMainMenu.gameObject.SetActive(false);
-                myGameMenu.gameObject.SetActive(false);
                 break;
             case LevelState.MainMenu:
                 myLevelState = aState;
-                myMainMenu.gameObject.SetActive(true);
-                myGameMenu.gameObject.SetActive(false);
                 break;
             case LevelState.Spawning:
                 myLevelState = aState;
-                myMainMenu.gameObject.SetActive(false);
-                myGameMenu.gameObject.SetActive(true);
                 myBattleBus = Instantiate(myBattleBusPrefab, myBattleBusSpawnPoint, Quaternion.identity);
                 break;
             case LevelState.Playing:
                 myLevelState = aState;
-                myMainMenu.gameObject.SetActive(false);
-                myGameMenu.gameObject.SetActive(true);
                 break;
         }
     }
