@@ -23,6 +23,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject startpoint;
     [SerializeField] private float myKillDepth = 2.0f;
 
+    public int myScore;
 
     private GameObject myPlayer;
     private GameObject myBattleBus;
@@ -50,6 +51,8 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        myScore = 0;
+
         myCameraManager = FindObjectOfType<CameraManager>();
         if (myCameraManager == null)
         {
@@ -81,6 +84,7 @@ public class LevelManager : MonoBehaviour
     public void OnEnterPlatform(GameObject aPlatform)
     {
         myCurrentPlatform = aPlatform;
+        ++myScore;
     }
 
     public void OnEnterHole(GameObject aBall)

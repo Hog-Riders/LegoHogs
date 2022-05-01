@@ -11,6 +11,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject myEndPointText;
     [SerializeField] private GameObject myBlueHubText;
     [SerializeField] private GameObject myYellowHubText;
+    [SerializeField] private GameObject myLevelText;
+    [SerializeField] private GameObject myScoreText;
     [SerializeField] private HogBaseHub myBlueHub;
     [SerializeField] private HogBaseHub myYellowHub;
 
@@ -26,24 +28,32 @@ public class UIManager : MonoBehaviour
                 myEndPointText.SetActive(false);
                 myBlueHubText.SetActive(false);
                 myYellowHubText.SetActive(false);
+                myLevelText.SetActive(false);
+                myScoreText.SetActive(false);
                 break;
             case LevelManager.LevelState.MainMenu:
                 myMainMenu.gameObject.SetActive(true);
                 myGameMenu.gameObject.SetActive(false);
                 myBlueHubText.SetActive(false);
                 myYellowHubText.SetActive(false);
+                myLevelText.SetActive(false);
+                myScoreText.SetActive(false);
                 break;
             case LevelManager.LevelState.Spawning:
                 myMainMenu.gameObject.SetActive(false);
                 myGameMenu.gameObject.SetActive(true);
                 myBlueHubText.SetActive(true);
                 myYellowHubText.SetActive(true);
+                myLevelText.SetActive(true);
+                myScoreText.SetActive(true);
                 break;
             case LevelManager.LevelState.Playing:
                 myMainMenu.gameObject.SetActive(false);
                 myGameMenu.gameObject.SetActive(true);
                 myBlueHubText.SetActive(true);
                 myYellowHubText.SetActive(true);
+                myLevelText.SetActive(true);
+                myScoreText.SetActive(true);
                 break;
         }
     }
@@ -63,6 +73,7 @@ public class UIManager : MonoBehaviour
         myEndPointText.SetActive(false);
         myBlueHubText.SetActive(false);
         myYellowHubText.SetActive(false);
+        myScoreText.SetActive(false);
     }
 
     // Update is called once per frame
@@ -70,7 +81,10 @@ public class UIManager : MonoBehaviour
     {
         if (myLevelManager.GetState() == LevelManager.LevelState.Playing
             || myLevelManager.GetState() == LevelManager.LevelState.Spawning)
+        {
             UpdateHubText();
+            myScoreText.GetComponent<TextMeshProUGUI>().text = "Score " + myLevelManager.myScore.ToString();
+        }
     }
 
     public void OnTiltControlsText()
