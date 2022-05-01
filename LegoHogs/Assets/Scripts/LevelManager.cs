@@ -15,7 +15,15 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject myPlayerPrefab;
     [SerializeField] private GameObject myBattleBusPrefab;
     [SerializeField] private LevelState myLevelState;
+
     
+
+    [SerializeField] private Canvas myMainMenu;
+    [SerializeField] private Canvas myGameMenu;
+    [SerializeField] private GameObject startpoint;
+    [SerializeField] private float myKillDepth = 2.0f;
+
+
     private GameObject myPlayer;
     private GameObject myBattleBus;
     private GameObject[] myPlatforms;
@@ -65,7 +73,8 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (myPlayer.transform.position.y < -myKillDepth)
+            OnReSpawn();
     }
 
     public void OnEnterHole(GameObject aBall)
@@ -89,6 +98,13 @@ public class LevelManager : MonoBehaviour
     {
         SetLevelState(LevelState.Playing);
         myPlayer = Instantiate(myPlayerPrefab, myBattleBus.transform.position, Quaternion.identity);
+        myCameraManager.OnSpawned();
+    }
+
+    public void OnReSpawn()
+    {
+        SetLevelState(LevelState.Playing);
+        myPlayer = Instantiate(myPlayerPrefab, startpoint.transform.position, Quaternion.identity);
         myCameraManager.OnSpawned();
     }
 
