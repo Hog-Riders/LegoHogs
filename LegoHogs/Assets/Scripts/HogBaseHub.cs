@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class HogBaseHub : MonoBehaviour
 {
-    [SerializeField] public Transform CurrentPlatform;
+    [SerializeField] public List<Transform> Platforms;
     [SerializeField] public float maxRotSpeed = 50.0f;
     public controllerColors currentController;
 
@@ -79,8 +79,11 @@ public class HogBaseHub : MonoBehaviour
 
     public void UpdateRotation(float time)
     {
-        Quaternion rotation = Quaternion.RotateTowards(CurrentPlatform.transform.rotation, Quaternion.Euler(controllerOrientation - controllerOffset), maxRotSpeed * time);
-        CurrentPlatform.transform.rotation = rotation;
+        foreach (var platform in Platforms)
+        {
+            Quaternion rotation = Quaternion.RotateTowards(platform.transform.rotation, Quaternion.Euler(controllerOrientation - controllerOffset), maxRotSpeed * time);
+            platform.transform.rotation = rotation;
+        }
     }
     // Update is called once per frame
     void Update()
