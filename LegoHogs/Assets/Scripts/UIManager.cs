@@ -101,16 +101,34 @@ public class UIManager : MonoBehaviour
     {
         myTiltControlsText.SetActive(true);
         myTiltControlsText.GetComponent<Animator>().Play("TiltControls");
+        Invoke("HideTiltControlsText", 4);
+    }
+
+    public void HideTiltControlsText()
+    {
+        myTiltControlsText.SetActive(false);
     }
 
     public void OnHazardText()
     {
         myHazardText.SetActive(true);
+        Invoke("HideHazardText", 4);
+    }
+
+    public void HideHazardText()
+    {
+        myHazardText.SetActive(false);
     }
 
     public void OnEndPoint()
     {
         myEndPointText.SetActive(true);
+        Invoke("HideEndPointText", 4);
+    }
+
+    public void HideEndPointText()
+    {
+        myEndPointText.SetActive(false);
     }
 
     public void UpdateHubIcons()
