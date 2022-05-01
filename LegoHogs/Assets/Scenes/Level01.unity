@@ -260,7 +260,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8702983440879308569, guid: 9cf2357f0d65831429bdf74e86956ed4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.69
+      value: -0.02
       objectReference: {fileID: 0}
     - target: {fileID: 8702983440879308569, guid: 9cf2357f0d65831429bdf74e86956ed4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -722,6 +722,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myMainMenu: {fileID: 1817739543}
   myGameMenu: {fileID: 757921313}
+  myPauseMenu: {fileID: 0}
   myTiltControlsText: {fileID: 43546344}
   myHazardText: {fileID: 1679555217}
   myEndPointText: {fileID: 1911868300}
