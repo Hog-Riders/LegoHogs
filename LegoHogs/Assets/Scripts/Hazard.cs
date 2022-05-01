@@ -4,17 +4,7 @@ using UnityEngine;
 
 public class Hazard : MonoBehaviour
 {
-
-    [SerializeField] private GameObject myPlayerPrefab;
-    [SerializeField] private GameObject startpoint;
-
-    private GameObject myPlayer;
-    
-    LevelManager myLevelManager;
-
-
-
-
+    private LevelManager myLevelManager;
 
     // Start is called before the first frame update
     void Start()
