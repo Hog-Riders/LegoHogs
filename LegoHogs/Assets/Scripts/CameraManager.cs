@@ -107,12 +107,14 @@ public class CameraManager : MonoBehaviour
 
     private void FollowPlayer()
     {
+        if (myLevelManager.GetState() == LevelManager.LevelState.Finished)
+            return;
         myWantedHeight = myPlayerTransform.position.y + myHeightOffset;
         myCurrentHeight = myCamera.transform.position.y;
 
         myCurrentHeight = Mathf.Lerp(myCurrentHeight, myWantedHeight, myHeightDamping * Time.deltaTime);
 
-        myWantedPosition = myPlayerTransform.position;
+        myWantedPosition = myPlayerTransform.position;  
         myWantedPosition.y = myCurrentHeight;
 
         myUsedDistance = Mathf.SmoothDampAngle(myUsedDistance, myDistanceOffset + (myPlayerRigidbody.velocity.magnitude * myDistanceMultiplier), ref myVelocity.z, myDistanceSnapTime);

@@ -20,10 +20,10 @@ public class Hazard : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-
+        if (myLevelManager.deadHogs.Contains(collision.gameObject))
+            return;
         FindObjectOfType<LevelManager>().OnEnterHazard(collision.gameObject);
-
+        myLevelManager.deadHogs.Add(collision.gameObject);
         myLevelManager.OnReSpawn();
-
     }
 }
