@@ -74,8 +74,8 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       if (myPlayer.transform.position.y < myCurrentPlatform.transform.position.y - myKillDepth)
-            OnReSpawn();
+       if (myCurrentPlatform != null && myPlayer.transform.position.y < myCurrentPlatform.transform.position.y - myKillDepth)
+                OnReSpawn();
     }
 
     public void OnEnterPlatform(GameObject aPlatform)

@@ -16,7 +16,7 @@ public class Platform : MonoBehaviour
         
     }
 
-     void OnCollisionEnter(Collision collision)
+     void OnTriggerEnter(Collider other)
     {
         FindObjectOfType<LevelManager>().OnEnterPlatform(gameObject);
     }
