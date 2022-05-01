@@ -9,8 +9,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject myTiltControlsText;
     [SerializeField] private GameObject myHazardText;
     [SerializeField] private GameObject myEndPointText;
-    [SerializeField] private GameObject myBlueHubText;
-    [SerializeField] private GameObject myYellowHubText;
+    [SerializeField] private GameObject myBlueHubImage;
+    [SerializeField] private GameObject myBlueHubCross;
+    [SerializeField] private GameObject myBlueHubCheckmark;
+    [SerializeField] private GameObject myYellowHubImage;
+    [SerializeField] private GameObject myYellowHubCross;
+    [SerializeField] private GameObject myYellowHubCheckmark;
     [SerializeField] private GameObject myLevelText;
     [SerializeField] private GameObject myScoreText;
     [SerializeField] private HogBaseHub myBlueHub;
@@ -26,34 +30,38 @@ public class UIManager : MonoBehaviour
                 myTiltControlsText.SetActive(false);
                 myHazardText.SetActive(false);
                 myEndPointText.SetActive(false);
-                myBlueHubText.SetActive(false);
-                myYellowHubText.SetActive(false);
                 myLevelText.SetActive(false);
                 myScoreText.SetActive(false);
+                myBlueHubImage.SetActive(false);
+                myBlueHubCross.SetActive(false);
+                myBlueHubCheckmark.SetActive(false);
+                myYellowHubImage.SetActive(false);
+                myYellowHubCross.SetActive(false);
+                myYellowHubCheckmark.SetActive(false);
                 break;
             case LevelManager.LevelState.MainMenu:
                 myMainMenu.gameObject.SetActive(true);
                 myGameMenu.gameObject.SetActive(false);
-                myBlueHubText.SetActive(false);
-                myYellowHubText.SetActive(false);
                 myLevelText.SetActive(false);
                 myScoreText.SetActive(false);
+                myBlueHubImage.SetActive(true);
+                myYellowHubImage.SetActive(true);
                 break;
             case LevelManager.LevelState.Spawning:
                 myMainMenu.gameObject.SetActive(false);
                 myGameMenu.gameObject.SetActive(true);
-                myBlueHubText.SetActive(true);
-                myYellowHubText.SetActive(true);
                 myLevelText.SetActive(true);
                 myScoreText.SetActive(true);
+                 myBlueHubImage.SetActive(true);
+                myYellowHubImage.SetActive(true);
                 break;
             case LevelManager.LevelState.Playing:
                 myMainMenu.gameObject.SetActive(false);
                 myGameMenu.gameObject.SetActive(true);
-                myBlueHubText.SetActive(true);
-                myYellowHubText.SetActive(true);
                 myLevelText.SetActive(true);
                 myScoreText.SetActive(true);
+                myBlueHubImage.SetActive(true);
+                myYellowHubImage.SetActive(true);
                 break;
         }
     }
@@ -68,12 +76,7 @@ public class UIManager : MonoBehaviour
             return;
         }
 
-        myTiltControlsText.SetActive(false);
-        myHazardText.SetActive(false);
-        myEndPointText.SetActive(false);
-        myBlueHubText.SetActive(false);
-        myYellowHubText.SetActive(false);
-        myScoreText.SetActive(false);
+        SwitchLevelState(LevelManager.LevelState.None);
     }
 
     // Update is called once per frame
@@ -82,9 +85,10 @@ public class UIManager : MonoBehaviour
         if (myLevelManager.GetState() == LevelManager.LevelState.Playing
             || myLevelManager.GetState() == LevelManager.LevelState.Spawning)
         {
-            UpdateHubText();
             myScoreText.GetComponent<TextMeshProUGUI>().text = "Score " + myLevelManager.myScore.ToString();
         }
+
+        UpdateHubIcons();
     }
 
     public void OnTiltControlsText()
@@ -105,9 +109,28 @@ public class UIManager : MonoBehaviour
         myEndPointText.GetComponent<Animator>().Play("TiltControls");
     }
 
-    public void UpdateHubText()
+    public void UpdateHubIcons()
     {
-        myBlueHubText.GetComponent<TextMeshProUGUI>().text = myBlueHub.hub.IsConnected ? "Connected" : "Disconnected";
-        myYellowHubText.GetComponent<TextMeshProUGUI>().text = myYellowHub.hub.IsConnected ? "Connected" : "Disconnected";
+        if (myBlueHub.hub.IsConnected)
+        {
+            myBlueHubCross.SetActive(false);
+            myBlueHubCheckmark.SetActive(true);
+        }
+        else
+        {
+            myBlueHubCross.SetActive(true);
+            myBlueHubCheckmark.SetActive(false);
+        }
+
+        if (myYellowHub.hub.IsConnected)
+        {
+            myYellowHubCross.SetActive(false);
+            myYellowHubCheckmark.SetActive(true);
+        }
+        else
+        {
+            myYellowHubCross.SetActive(true);
+            myYellowHubCheckmark.SetActive(false);
+        }
     }
 }
