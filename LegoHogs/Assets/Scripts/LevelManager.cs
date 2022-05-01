@@ -101,6 +101,7 @@ public class LevelManager : MonoBehaviour
         myUIManager.OnHazardText();
         SetLevelState(LevelState.Finished);
         myPlayer.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
+        myPlayer.GetComponent<SphereCollider>().enabled = false;
     }
 
     public void OnSpawn()
