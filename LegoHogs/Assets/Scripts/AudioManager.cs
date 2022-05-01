@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(AudioSource))]
 public class AudioManager : MonoBehaviour
 {
     [SerializeField] private AudioClip myBackgroundMusic;
     [SerializeField] private AudioClip myHogRiderClip;
+    [SerializeField] private AudioClip myBattleBusClip;
+    [SerializeField] private AudioClip myBussinClip;
 
     private AudioSource myClipAudioSource;
     private AudioSource myBackgroundAudioSource;
@@ -14,21 +15,41 @@ public class AudioManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        myClipAudioSource = GetComponent<AudioSource>();
-        myBackgroundAudioSource = GetComponent<AudioSource>();
+        myClipAudioSource = gameObject.AddComponent<AudioSource>();
+        myClipAudioSource.playOnAwake = false;
+        myBackgroundAudioSource = gameObject.AddComponent<AudioSource>();
         myBackgroundAudioSource.clip = myBackgroundMusic;
+        myBackgroundAudioSource.volume = 0.2f;
         myBackgroundAudioSource.Play();
+        Bussin();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     public void OnHogRider()
     {
         myClipAudioSource.clip = myHogRiderClip;
+        myClipAudioSource.volume = 0.7f;
+        myClipAudioSource.Play();
+    }
+
+    public void OnBattleBus()
+    {
+        myClipAudioSource.clip = myBattleBusClip;
+        myClipAudioSource.volume = 1.0f;
+        myClipAudioSource.Play();
+    }
+
+    public void Bussin()
+    {
+        float spawnInterval = Random.Range(5.0f, 50f);
+        Invoke(nameof(Bussin), spawnInterval);
+
+        myClipAudioSource.clip = myBussinClip;
+        myClipAudioSource.volume = 1.0f;
         myClipAudioSource.Play();
     }
 }
