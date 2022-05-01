@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
@@ -96,6 +97,7 @@ public class LevelManager : MonoBehaviour
     {
         myUIManager.OnEndPoint();
         Destroy(aBall);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void OnEnterHazard(GameObject aBall)
