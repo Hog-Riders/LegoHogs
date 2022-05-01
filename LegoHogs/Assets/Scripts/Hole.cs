@@ -18,6 +18,6 @@ public class Hole : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        FindObjectOfType<LevelManager>().OnEnterHole();
+        FindObjectOfType<LevelManager>().OnEnterHole(collision.gameObject);
     }
 }

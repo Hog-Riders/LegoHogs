@@ -18,6 +18,6 @@ public class Hazard : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        Destroy(collision.gameObject);
+        FindObjectOfType<LevelManager>().OnEnterHazard(collision.gameObject);
     }
 }

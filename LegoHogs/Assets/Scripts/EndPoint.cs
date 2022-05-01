@@ -18,6 +18,6 @@ public class EndPoint : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        Destroy(collision.gameObject);
+        FindObjectOfType<LevelManager>().OnEnterEndPoint(collision.gameObject);
     }
 }
