@@ -18,8 +18,6 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject myBattleBusPrefab;
     [SerializeField] private LevelState myLevelState;
 
-    
-
     [SerializeField] private Canvas myMainMenu;
     [SerializeField] private Canvas myGameMenu;
     [SerializeField] private GameObject startpoint;
@@ -117,6 +115,7 @@ public class LevelManager : MonoBehaviour
         startPosition.y += 0.5f;
         myPlayer = Instantiate(myPlayerPrefab, startPosition, Quaternion.identity);
         myCameraManager.OnSpawned();
+        myUIManager.OnRespawn();
     }
 
     public void OnPlay()

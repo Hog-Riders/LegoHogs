@@ -90,6 +90,12 @@ public class UIManager : MonoBehaviour
 
         UpdateHubIcons();
     }
+    public void OnRespawn()
+    {
+        myTiltControlsText.SetActive(false);
+        myHazardText.SetActive(false);
+        myEndPointText.SetActive(false);
+    }
 
     public void OnTiltControlsText()
     {
