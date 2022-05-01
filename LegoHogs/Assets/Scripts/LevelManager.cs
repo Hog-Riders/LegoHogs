@@ -117,7 +117,7 @@ public class LevelManager : MonoBehaviour
     {
         SetLevelState(LevelState.Playing);
         var startPosition = startpoint.transform.position;
-        startPosition.y += 0.15f;
+        startPosition.y += 0.5f;
         myPlayer = Instantiate(myPlayerPrefab, startPosition, Quaternion.identity);
         myCameraManager.OnSpawned();
     }
