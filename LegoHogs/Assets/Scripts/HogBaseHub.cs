@@ -73,7 +73,6 @@ public class HogBaseHub : MonoBehaviour
     public void CallibrateController()
     {
         controllerOffset = GetComponent<OrientationSensor>().Orientation;
-        //controllerOffset.y += 90.0f;
         isCallibrated = true;
     }
 
@@ -81,7 +80,8 @@ public class HogBaseHub : MonoBehaviour
     {
         foreach (var platform in Platforms)
         {
-            Quaternion rotation = Quaternion.RotateTowards(platform.transform.rotation, Quaternion.Euler(controllerOrientation - controllerOffset), maxRotSpeed * time);
+            var controllerRot = controllerOrientation - controllerOffset;
+            Quaternion rotation = Quaternion.RotateTowards(platform.transform.rotation, Quaternion.Euler(controllerRot.z, 0.0f, -controllerRot.x), maxRotSpeed * time);
             platform.transform.rotation = rotation;
         }
     }
