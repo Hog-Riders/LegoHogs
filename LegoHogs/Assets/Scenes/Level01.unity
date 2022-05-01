@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18428779, g: 0.5832273, b: 0.7312675, a: 1}
+  m_IndirectSpecularColor: {r: 0.18427426, g: 0.5832499, b: 0.7312815, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1192,6 +1192,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &824436396 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2833477625353117322, guid: e6a79f5d8b7824b4596729d59403a010, type: 3}
+  m_PrefabInstance: {fileID: 9022736257014708702}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &880755626
 GameObject:
   m_ObjectHideFlags: 0
@@ -1606,6 +1611,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16b6dcb8e96ee794b859cbb15aae7eeb, type: 3}
+--- !u!4 &1065115183 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6321700634560496591, guid: 16b6dcb8e96ee794b859cbb15aae7eeb, type: 3}
+  m_PrefabInstance: {fileID: 1023097493}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1073079150
 GameObject:
   m_ObjectHideFlags: 0
@@ -2752,7 +2762,7 @@ PrefabInstance:
     - target: {fileID: 8144700016516864148, guid: ecf6e03d796e7bd47b6cffbe8f38dbc3, type: 3}
       propertyPath: Platforms.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1065115183}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecf6e03d796e7bd47b6cffbe8f38dbc3, type: 3}
 --- !u!1001 &4801166387744513546
@@ -2908,6 +2918,14 @@ PrefabInstance:
       propertyPath: myMainMenu
       value: 
       objectReference: {fileID: 1817739543}
+    - target: {fileID: 7042831137013466083, guid: 7ce230ed014b9bd488d12180c9248ae0, type: 3}
+      propertyPath: startpoint
+      value: 
+      objectReference: {fileID: 824436396}
+    - target: {fileID: 7042831137013466083, guid: 7ce230ed014b9bd488d12180c9248ae0, type: 3}
+      propertyPath: myKillDepth
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7042831137013466083, guid: 7ce230ed014b9bd488d12180c9248ae0, type: 3}
       propertyPath: myPlayerPrefab
       value: 
