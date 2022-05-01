@@ -9,6 +9,8 @@ public class HogBaseHub : MonoBehaviour
     [SerializeField] public float maxRotSpeed = 50.0f;
     public controllerColors currentController;
 
+    private LevelManager myLevelManager;
+
     public enum controllerColors
     {
         BLUE,
@@ -26,6 +28,13 @@ public class HogBaseHub : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        myLevelManager = FindObjectOfType<LevelManager>();
+        if (myLevelManager == null)
+        {
+            Debug.LogError("No LevelManager found!");
+            Destroy(gameObject);
+            return;
+        }
 
         hub = GetComponentInParent<HubBase>();
         if (hub == null)
@@ -78,6 +87,9 @@ public class HogBaseHub : MonoBehaviour
 
     public void UpdateRotation(float time)
     {
+        if (myLevelManager.GetState() != LevelManager.LevelState.Playing)
+            return;
+
         foreach (var platform in Platforms)
         {
             var controllerRot = controllerOrientation - controllerOffset;
