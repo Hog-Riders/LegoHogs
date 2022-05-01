@@ -73,8 +73,8 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (myPlayer.transform.position.y < -myKillDepth)
-            OnReSpawn();
+       /* if (myPlayer.transform.position.y < -myKillDepth)
+            print("I just had a cool facetime call with your mum, she wanted me to tell you how disapointed it is and that all the errors are your fault... 15 points.");//OnReSpawn();*/
     }
 
     public void OnEnterHole(GameObject aBall)
