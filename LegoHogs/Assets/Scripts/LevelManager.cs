@@ -23,6 +23,11 @@ public class LevelManager : MonoBehaviour
     CameraManager myCameraManager;
     UIManager myUIManager;
 
+    public LevelState GetState()
+    {
+        return myLevelState;
+    }
+
     public GameObject[] GetPlatforms()
     {
         return myPlatforms;

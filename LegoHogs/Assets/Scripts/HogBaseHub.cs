@@ -18,7 +18,7 @@ public class HogBaseHub : MonoBehaviour
     public Dictionary<string, controllerColors> hubIDs = new Dictionary< string, controllerColors> {
         {  "69936A2B84900000", controllerColors.BLUE}, { "95A26A2B84900000",controllerColors.YELLOW}};
     
-    HubBase hub;
+    public HubBase hub;
     Vector3 controllerOffset;
     Vector3 controllerOrientation;
     bool isCallibrated;
