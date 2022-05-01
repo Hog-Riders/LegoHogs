@@ -114,7 +114,7 @@ public class CameraManager : MonoBehaviour
 
         myCurrentHeight = Mathf.Lerp(myCurrentHeight, myWantedHeight, myHeightDamping * Time.deltaTime);
 
-        myWantedPosition = myPlayerTransform.position;
+        myWantedPosition = myPlayerTransform.position;  
         myWantedPosition.y = myCurrentHeight;
 
         myUsedDistance = Mathf.SmoothDampAngle(myUsedDistance, myDistanceOffset + (myPlayerRigidbody.velocity.magnitude * myDistanceMultiplier), ref myVelocity.z, myDistanceSnapTime);

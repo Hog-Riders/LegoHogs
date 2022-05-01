@@ -51,13 +51,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1120837663168503284, guid: 8f6074e9efe230e4a9bcca54ae037d23, type: 3}
+      propertyPath: _ledColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1120837663168503284, guid: 8f6074e9efe230e4a9bcca54ae037d23, type: 3}
+      propertyPath: _ledColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1120837663168503284, guid: 8f6074e9efe230e4a9bcca54ae037d23, type: 3}
+      propertyPath: _ledColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5126739580085065941, guid: 8f6074e9efe230e4a9bcca54ae037d23, type: 3}
       propertyPath: CurrentPlatform
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 9072525599367206168, guid: 8f6074e9efe230e4a9bcca54ae037d23, type: 3}
       propertyPath: m_Name
-      value: YellowBaseHub
+      value: YellowBaseHub Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f6074e9efe230e4a9bcca54ae037d23, type: 3}
