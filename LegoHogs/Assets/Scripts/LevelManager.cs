@@ -27,6 +27,7 @@ public class LevelManager : MonoBehaviour
     private GameObject myPlayer;
     private GameObject myBattleBus;
     private GameObject[] myPlatforms;
+    private GameObject myCurrentPlatform;
 
     CameraManager myCameraManager;
     UIManager myUIManager;
@@ -73,8 +74,13 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       /* if (myPlayer.transform.position.y < -myKillDepth)
-            print("I just had a cool facetime call with your mum, she wanted me to tell you how disapointed it is and that all the errors are your fault... 15 points.");//OnReSpawn();*/
+       if (myPlayer.transform.position.y < myCurrentPlatform.transform.position.y - myKillDepth)
+            OnReSpawn();
+    }
+
+    public void OnEnterPlatform(GameObject aPlatform)
+    {
+        myCurrentPlatform = aPlatform;
     }
 
     public void OnEnterHole(GameObject aBall)
