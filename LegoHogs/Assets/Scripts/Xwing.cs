@@ -13,7 +13,7 @@ public class Xwing : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        speed = 2;
+        speed = 1;
         width = 16;
        height = 10; 
 
@@ -24,9 +24,9 @@ public class Xwing : MonoBehaviour
     {
         timeCounter += Time.deltaTime * speed;
 
-        float X = -6;
+        float X = Mathf.Sin(timeCounter) * height;
         float Y = Mathf.Cos(timeCounter) * width;
-        float Z = Mathf.Sin(timeCounter) * height;
+        float Z = 6;
 
         transform.position = new Vector3(X, Y, Z);
     }
