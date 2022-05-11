@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 772493850712161140}
-  - component: {fileID: 5126739580085065941}
   - component: {fileID: 1120837663168503284}
   - component: {fileID: 9208590116204314884}
+  - component: {fileID: 3425533323504622035}
   m_Layer: 0
   m_Name: HogBaseHub
   m_TagString: Untagged
@@ -34,21 +34,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5126739580085065941
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9072525599367206168}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2a3070f4f5bf95408822f72c22a193b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CurrentPlatform: {fileID: 0}
-  maxRotSpeed: 50
-  currentController: 0
 --- !u!114 &1120837663168503284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92,9 +77,9 @@ MonoBehaviour:
   IsConnectedChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5126739580085065941}
+      - m_Target: {fileID: 102900000, guid: 8c99bea799b14be42aeb4aa2a5bc3aa5, type: 3}
         m_TargetAssemblyTypeName: HogBaseHub, Assembly-CSharp
-        m_MethodName: OnIsConnectedChanged
+        m_MethodName: 
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -109,7 +94,7 @@ MonoBehaviour:
   OrientationChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5126739580085065941}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: HogBaseHub, Assembly-CSharp
         m_MethodName: OnOrientationChanged
         m_Mode: 0
@@ -121,3 +106,15 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3425533323504622035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9072525599367206168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2aadf5088fe4e147a4bfa1dee62b826, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

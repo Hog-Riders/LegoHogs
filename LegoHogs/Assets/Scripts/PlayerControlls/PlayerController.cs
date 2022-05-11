@@ -14,9 +14,9 @@ public class PlayerController : MonoBehaviour
     {
          
         var allPlatforms = FindObjectsOfType<Platform>();
-        if (allPlatforms.Length == 0)
+        if (allPlatforms.Length == 0 || playerControllers.Count == 0)
         {
-            Debug.LogError("No platforms found!");
+            Debug.LogError("No platforms or no controllers found!");
             Destroy(gameObject);
             return;
         }
@@ -25,6 +25,12 @@ public class PlayerController : MonoBehaviour
         foreach (InputController controller in playerControllers)
         {
             myPlayerPlatformLists.Add(new List<Platform>());
+            if (controller == null)
+            {
+                Debug.LogError("Controller left empty! Please set in level controller.");
+                Destroy(gameObject);
+                return;
+            }
         }
 
        
@@ -45,6 +51,7 @@ public class PlayerController : MonoBehaviour
             foreach (Platform platform in myPlayerPlatformLists[i])
             {
                 Quaternion rotation = Quaternion.RotateTowards(platform.transform.rotation, Quaternion.Euler(playerControllers[i].GetInputRotation().x, 0.0f, playerControllers[i].GetInputRotation().y), maxRotSpeed * Time.deltaTime);
+                platform.transform.rotation = rotation;
             }
         }
     }

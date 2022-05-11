@@ -19,8 +19,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject myYellowHubCheckmark;
     [SerializeField] private GameObject myLevelText;
     [SerializeField] private GameObject myScoreText;
-    [SerializeField] private HogBaseHub myBlueHub;
-    [SerializeField] private HogBaseHub myYellowHub;
+    [SerializeField] private LegoInputController myBlueHub;
+    [SerializeField] private LegoInputController myYellowHub;
 
     LevelManager myLevelManager;
 
@@ -148,27 +148,27 @@ public class UIManager : MonoBehaviour
 
     public void UpdateHubIcons()
     {
-        if (myBlueHub.hub.IsConnected)
-        {
-            myBlueHubCross.SetActive(false);
-            myBlueHubCheckmark.SetActive(true);
-        }
-        else
-        {
-            myBlueHubCross.SetActive(true);
-            myBlueHubCheckmark.SetActive(false);
-        }
+        //if (myBlueHub.hub.IsConnected)
+        //{
+        //    myBlueHubCross.SetActive(false);
+        //    myBlueHubCheckmark.SetActive(true);
+        //}
+        //else
+        //{
+        //    myBlueHubCross.SetActive(true);
+        //    myBlueHubCheckmark.SetActive(false);
+        //}
 
-        if (myYellowHub.hub.IsConnected)
-        {
-            myYellowHubCross.SetActive(false);
-            myYellowHubCheckmark.SetActive(true);
-        }
-        else
-        {
-            myYellowHubCross.SetActive(true);
-            myYellowHubCheckmark.SetActive(false);
-        }
+        //if (myYellowHub.hub.IsConnected)
+        //{
+        //    myYellowHubCross.SetActive(false);
+        //    myYellowHubCheckmark.SetActive(true);
+        //}
+        //else
+        //{
+        //    myYellowHubCross.SetActive(true);
+        //    myYellowHubCheckmark.SetActive(false);
+        //}
     }
 
     public void ExitGame()
