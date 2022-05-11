@@ -5,9 +5,17 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float maxRotSpeed = 50.0f;
+    public bool usingtilt;
     [SerializeField] private List<InputController> playerControllers;
     
     private List<List<Platform>> myPlayerPlatformLists;
+
+    public GameObject platform1;
+    public GameObject platform2;
+    public GameObject platform3;
+    public GameObject platform4;
+    private float movespeed = 10f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -46,13 +54,52 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        for (int i = 0; i < playerControllers.Count; i++)
+        if(usingtilt == true)
         {
-            foreach (Platform platform in myPlayerPlatformLists[i])
+            for (int i = 0; i < playerControllers.Count; i++)
             {
-                Quaternion rotation = Quaternion.RotateTowards(platform.transform.rotation, Quaternion.Euler(playerControllers[i].GetInputRotation().x, 0.0f, playerControllers[i].GetInputRotation().y), maxRotSpeed * Time.deltaTime);
-                platform.transform.rotation = rotation;
+                foreach (Platform platform in myPlayerPlatformLists[i])
+                {
+                    Quaternion rotation = Quaternion.RotateTowards(platform.transform.rotation, Quaternion.Euler(playerControllers[i].GetInputRotation().x, 0.0f, playerControllers[i].GetInputRotation().y), maxRotSpeed * Time.deltaTime);
+                    platform.transform.rotation = rotation;
+                }
             }
         }
+
+        if(usingtilt == false)
+        {
+            if (Input.GetKeyDown(KeyCode.Joystick1Button8))
+            {
+                platform1.transform.rotation = Quaternion.identity;
+                platform3.transform.rotation = Quaternion.identity;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Joystick1Button9))
+            {
+
+                platform2.transform.rotation = Quaternion.identity;
+                platform4.transform.rotation = Quaternion.identity;
+            }
+
+
+            float rotationX1 = Input.GetAxis("Vertical.left") * -1 * movespeed;
+            float rotationy1 = Input.GetAxis("Horizontal.left") * -1 * movespeed;
+            platform1.transform.Rotate(rotationX1, 0, rotationy1);
+            
+            float rotationX2 = Input.GetAxis("Horizontal.right") * -1 * movespeed;
+            float rotationy2 = Input.GetAxis("Vertical.right") * -1 * movespeed;
+            platform2.transform.Rotate(rotationX2, 0, rotationy2);
+
+            float rotationX3 = Input.GetAxis("Vertical.left") * -1 * movespeed;
+            float rotationy3 = Input.GetAxis("Horizontal.left") * -1 * movespeed;
+            platform3.transform.Rotate(rotationX3, 0, rotationy3);
+
+            float rotationX4 = Input.GetAxis("Horizontal.right") * -1 * movespeed;
+            float rotationy4 = Input.GetAxis("Vertical.right") * -1 * movespeed;
+            platform4.transform.Rotate(rotationX4, 0, rotationy4);
+        }
+
+
+        //event.Input.GetButtonDown       
     }
 }
