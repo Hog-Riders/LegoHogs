@@ -1,18 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float maxRotSpeed = 50.0f;
+    [SerializeField] private float maxRotAngle = 45.0f;
     [SerializeField] private List<InputController> playerControllers;
     
     private List<List<Platform>> myPlayerPlatformLists;
 
+    private PlayerControls myDefaultPlayerControls;
+    private InputAction myRotationAction;
+
     // Start is called before the first frame update
     void Start()
     {
-         
+        myDefaultPlayerControls = new PlayerControls();
+        myRotationAction = myDefaultPlayerControls.Player.Move;
+        myRotationAction.Enable();
+
         var allPlatforms = FindObjectsOfType<Platform>();
         if (allPlatforms.Length == 0 || playerControllers.Count == 0)
         {
@@ -50,7 +58,9 @@ public class PlayerController : MonoBehaviour
         {
             foreach (Platform platform in myPlayerPlatformLists[i])
             {
-                Quaternion rotation = Quaternion.RotateTowards(platform.transform.rotation, Quaternion.Euler(playerControllers[i].GetInputRotation().x, 0.0f, playerControllers[i].GetInputRotation().y), maxRotSpeed * Time.deltaTime);
+                var inputRoation = myRotationAction.ReadValue<Vector2>();
+                //Quaternion rotation = Quaternion.RotateTowards(platform.transform.rotation, Quaternion.Euler(playerControllers[i].GetInputRotation().x, 0.0f, playerControllers[i].GetInputRotation().y), maxRotSpeed * Time.deltaTime);
+               Quaternion rotation = Quaternion.RotateTowards(platform.transform.rotation, Quaternion.Euler(inputRoation.y * maxRotAngle, 0.0f, -inputRoation.x * maxRotAngle), maxRotSpeed * Time.deltaTime);
                 platform.transform.rotation = rotation;
             }
         }

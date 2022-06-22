@@ -253,17 +253,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7012458405385277299, guid: 27336b0b958aed849942146117168257, type: 3}
   m_PrefabInstance: {fileID: 7012458404904489510}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &602654671 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 397720947857260723, guid: 47c65064dfc8cff40bf34fab0ec8eb03, type: 3}
-  m_PrefabInstance: {fileID: 4801166387744513546}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4801166387744513547}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2a3070f4f5bf95408822f72c22a193b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &611769022 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5913098159837653762, guid: 208e7696c101cf9488132a94b8a41514, type: 3}
@@ -487,17 +476,6 @@ Canvas:
   m_CorrespondingSourceObject: {fileID: 7012458405661254663, guid: 27336b0b958aed849942146117168257, type: 3}
   m_PrefabInstance: {fileID: 7012458404904489510}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &890684377 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8144700016516864148, guid: ecf6e03d796e7bd47b6cffbe8f38dbc3, type: 3}
-  m_PrefabInstance: {fileID: 3900715407348638920}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3900715407348638921}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2a3070f4f5bf95408822f72c22a193b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &998976745
 GameObject:
   m_ObjectHideFlags: 0
@@ -705,8 +683,8 @@ MonoBehaviour:
   myYellowHubCheckmark: {fileID: 699311359}
   myLevelText: {fileID: 446193169}
   myScoreText: {fileID: 498720085}
-  myBlueHub: {fileID: 602654671}
-  myYellowHub: {fileID: 890684377}
+  myBlueHub: {fileID: 0}
+  myYellowHub: {fileID: 0}
 --- !u!4 &1276250067
 Transform:
   m_ObjectHideFlags: 0
@@ -1635,6 +1613,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxRotSpeed: 50
+  maxRotAngle: 45
   playerControllers:
   - {fileID: 4801166387744513548}
   - {fileID: 3900715407348638922}
