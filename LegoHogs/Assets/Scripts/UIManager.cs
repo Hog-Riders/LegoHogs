@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -92,19 +93,20 @@ public class UIManager : MonoBehaviour
         }
 
         UpdateHubIcons();
+    }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+    public void OnMenuPressed(InputAction.CallbackContext context)
+    {
+        if (myPauseMenu.gameObject.activeInHierarchy)
         {
-            if (myPauseMenu.gameObject.activeInHierarchy)
-            {
-                myPauseMenu.gameObject.SetActive(false);
-            }
-            else
-            {
-                myPauseMenu.gameObject.SetActive(true);
-            }
+            myPauseMenu.gameObject.SetActive(false);
+        }
+        else
+        {
+            myPauseMenu.gameObject.SetActive(true);
         }
     }
+
     public void OnRespawn()
     {
         myTiltControlsText.SetActive(false);
