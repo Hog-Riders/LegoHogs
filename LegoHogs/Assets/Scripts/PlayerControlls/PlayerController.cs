@@ -49,6 +49,8 @@ public class PlayerController : MonoBehaviour
             else
                 Debug.LogError("Platform Color not found!");
         }
+
+        InputSystem.AddDevice<InputSystemLegoController>();
     }
 
     // Update is called once per frame
